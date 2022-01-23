@@ -1,13 +1,22 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
+import './index.scss';
 import reportWebVitals from './reportWebVitals';
+import {BrowserRouter, Route, Routes} from "react-router-dom";
+import LearnApp from "./pages/ForeignLanguageLearn/LearnApp";
+import BacklogApp from "./pages/Backlog/BacklogApp";
+import PortfolioApp from "./pages/Portfolio/PortfolioApp";
 
 ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
+    <React.StrictMode>
+        <BrowserRouter>
+            <Routes>
+                <Route path="/learn" element={<LearnApp />} />
+                <Route path="/todo" element={<BacklogApp />} />
+                <Route path="/" element={<PortfolioApp />} />
+            </Routes>
+        </BrowserRouter>
+    </React.StrictMode>,
   document.getElementById('root')
 );
 
