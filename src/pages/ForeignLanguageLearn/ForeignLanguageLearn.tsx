@@ -1,6 +1,6 @@
 import React from 'react';
 
-function LearnApp() {
+function ForeignLanguageLearn() {
   return (
     <>
       <p>Cześć, jestem LearnApp!</p>
@@ -8,4 +8,4 @@ function LearnApp() {
   );
 }
 
-export default LearnApp;
+export default ForeignLanguageLearn;
