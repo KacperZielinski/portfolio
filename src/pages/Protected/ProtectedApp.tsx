@@ -1,12 +1,13 @@
 import React, { ChangeEvent, useState} from 'react';
 import {Link} from "react-router-dom";
-import {initializeFirebase, loadFirebaseConfigFromLocalStorage} from "../firebase";
+import {auth, loadFirebaseConfigFromLocalStorage} from "../firebase";
 import {FirebaseConfig} from "../../model/LocalStorageData";
+import { signInWithEmailAndPassword } from 'firebase/auth';
 
 function ProtectedApp() {
     const [firebaseConfig, setFirebaseConfig] = useState<FirebaseConfig>()
     const [masterKey, setMasterKey] = useState<string>('');
-    const [username, setUsername] = useState<string>('');
+    const [email, setEmail] = useState<string>('');
     const [password, setPassword] = useState<string>('');
 
     async function fileToJSON(file: ChangeEvent<HTMLInputElement>) {
@@ -24,12 +25,7 @@ function ProtectedApp() {
             <br />
             <form onSubmit={(e) => {
                 e.preventDefault();
-                localStorage.setItem("firebase", JSON.stringify({
-                    ...firebaseConfig,
-                    username: username,
-                    password: password
-                }));
-
+                localStorage.setItem("firebase", JSON.stringify(firebaseConfig));
                 console.log(firebaseConfig);
                 loadFirebaseConfigFromLocalStorage();
             }}>
@@ -39,7 +35,7 @@ function ProtectedApp() {
                 <input value={firebaseConfig?.projectId} hidden readOnly />
                 <input value={firebaseConfig?.storageBucket} hidden readOnly />
                 <input value={firebaseConfig?.messagingSenderId} hidden readOnly />
-                <input value={username} onChange={e => setUsername(e.target.value)} />
+                <input value={email} onChange={e => setEmail(e.target.value)} />
                 <input type='password' value={password} onChange={e => setPassword(e.target.value)} />
                 <input type="file" accept='application/json' onChange={(e) => fileToJSON(e)} />
                 <button type='submit'>Save</button>
@@ -47,7 +43,25 @@ function ProtectedApp() {
             <br />
             <p>Or use password!</p>
             <input type='password' value={masterKey} onChange={e => setMasterKey(e.target.value)} />
-            <button onClick={loadFirebaseConfigFromLocalStorage}>Login</button>
+            <button onClick={() => {
+                loadFirebaseConfigFromLocalStorage()
+                // const auth = getAuth();
+                signInWithEmailAndPassword(auth!, email, password)
+                    .then((userCredential) => {
+                        // Signed in
+                        const user = userCredential.user;
+                        alert('succeeddd!');
+                        console.log(user);
+                        // ...
+                    })
+                    .catch((error) => {
+                        const errorCode = error.code;
+                        const errorMessage = error.message;
+                        alert('failed!');
+                    });
+            }}>
+                Login
+            </button>
             <br />
             <Link to="/todo">Backlog</Link>
             <Link to="/learn">LearnIT</Link>
