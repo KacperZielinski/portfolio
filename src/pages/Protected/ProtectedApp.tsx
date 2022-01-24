@@ -1,22 +1,7 @@
 import React, { ChangeEvent, useState} from 'react';
 import {Link} from "react-router-dom";
-import {initializeFirebase} from "../firebase";
-import AES from 'crypto-js/aes';
-import enc from 'crypto-js/enc-utf8';
-
-interface FirebaseConfig {
-    apiKey: string;
-    authDomain: string;
-    projectId: string;
-    storageBucket: string;
-    messagingSenderId: string;
-    appId: string;
-}
-
-interface User {
-    username?: string;
-    password?: string
-}
+import {initializeFirebase, loadFirebaseConfigFromLocalStorage} from "../firebase";
+import {FirebaseConfig} from "../../model/LocalStorageData";
 
 function ProtectedApp() {
     const [firebaseConfig, setFirebaseConfig] = useState<FirebaseConfig>()
@@ -39,16 +24,14 @@ function ProtectedApp() {
             <br />
             <form onSubmit={(e) => {
                 e.preventDefault();
-                localStorage.setItem("firebase", AES.encrypt(JSON.stringify(({
+                localStorage.setItem("firebase", JSON.stringify({
                     ...firebaseConfig,
                     username: username,
                     password: password
-                })), masterKey).toString());
+                }));
 
                 console.log(firebaseConfig);
-                initializeFirebase(firebaseConfig);
-                // login user and put userCredential in store Context/Redux ?
-                // route to some other place or render component
+                loadFirebaseConfigFromLocalStorage();
             }}>
                 <input value={firebaseConfig?.appId} hidden readOnly />
                 <input value={firebaseConfig?.apiKey} hidden readOnly />
@@ -64,28 +47,7 @@ function ProtectedApp() {
             <br />
             <p>Or use password!</p>
             <input type='password' value={masterKey} onChange={e => setMasterKey(e.target.value)} />
-            <button onClick={() => {
-                const firebaseLocalConfig = localStorage.getItem("firebase");
-                if (firebaseLocalConfig !== null) {
-                    const bytes = AES.decrypt(firebaseLocalConfig, masterKey);
-                    const decryptedData: FirebaseConfig & User = JSON.parse(bytes.toString(enc));
-                    const decryptedFirebaseConfig: FirebaseConfig = {
-                        appId: decryptedData.appId,
-                        authDomain: decryptedData.authDomain,
-                        messagingSenderId: decryptedData.messagingSenderId,
-                        projectId: decryptedData.projectId,
-                        apiKey: decryptedData.apiKey,
-                        storageBucket: decryptedData.storageBucket,
-                    }
-                    console.log(decryptedFirebaseConfig);
-                    setFirebaseConfig(decryptedFirebaseConfig);
-                    initializeFirebase(decryptedFirebaseConfig);
-                    // login user and put userCredential in store Context/Redux ?
-                    // route to some other place or render component
-                }
-            }}>
-                Login
-            </button>
+            <button onClick={loadFirebaseConfigFromLocalStorage}>Login</button>
             <br />
             <Link to="/todo">Backlog</Link>
             <Link to="/learn">LearnIT</Link>
