@@ -6,11 +6,13 @@ import {HashRouter, Route, Routes} from "react-router-dom";
 import ForeignLanguageLearn from "./pages/ForeignLanguageLearn/ForeignLanguageLearn";
 import BacklogApp from "./pages/Backlog/BacklogApp";
 import PortfolioApp from "./pages/Portfolio/PortfolioApp";
+import ProtectedApp from "./pages/Protected/ProtectedApp";
 
 ReactDOM.render(
     <React.StrictMode>
         <HashRouter>
             <Routes>
+                <Route path="/app" element={<ProtectedApp />} />
                 <Route path="/learn" element={<ForeignLanguageLearn />} />
                 <Route path="/todo" element={<BacklogApp />} />
                 <Route path="/" element={<PortfolioApp />} />

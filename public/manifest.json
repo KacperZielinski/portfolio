@@ -1,7 +1,7 @@
 {
   "short_name": "LearnIT",
   "name": "LearnIT",
-  "start_url": "./#/learn",
+  "start_url": "./#/app",
   "display": "standalone",
   "theme_color": "#000000",
   "background_color": "#ffffff"
