@@ -1,6 +1,6 @@
 import { initializeApp } from "firebase/app";
 import { Firestore, getFirestore } from "firebase/firestore";
-import { Auth, getAuth } from "firebase/auth";
+import {Auth, getAuth, signInWithEmailAndPassword} from "firebase/auth";
 import {FirebaseConfig, User} from "../model/LocalStorageData";
 
 let db: Firestore | undefined;
@@ -26,6 +26,15 @@ export const loadFirebaseConfigFromLocalStorage: () => void = () => {
         }
         console.log(config);
         initializeFirebase(config);
+        signInWithEmailAndPassword(auth!, localData.email || '', localData.password || '')
+            .then((userCredential) => {
+                // Signed in
+                // const user = userCredential.user;
+            })
+            .catch((error) => {
+                // const errorCode = error.code;
+                // const errorMessage = error.message;
+            });
         // login user and put userCredential in store Context/Redux ?
         // route to some other place or render component
     }

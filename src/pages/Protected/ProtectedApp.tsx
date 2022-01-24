@@ -1,14 +1,20 @@
-import React, { ChangeEvent, useState} from 'react';
-import {Link} from "react-router-dom";
-import {auth, loadFirebaseConfigFromLocalStorage} from "../firebase";
+import React, {ChangeEvent, useEffect, useState} from 'react';
+import {useNavigate, Link} from "react-router-dom";
+import {loadFirebaseConfigFromLocalStorage} from "../firebase";
 import {FirebaseConfig} from "../../model/LocalStorageData";
-import { signInWithEmailAndPassword } from 'firebase/auth';
 
 function ProtectedApp() {
     const [firebaseConfig, setFirebaseConfig] = useState<FirebaseConfig>()
-    const [masterKey, setMasterKey] = useState<string>('');
     const [email, setEmail] = useState<string>('');
     const [password, setPassword] = useState<string>('');
+
+    const navigate = useNavigate();
+
+    useEffect(() => {
+        if(localStorage.getItem("firebase") !== null) {
+            navigate("/todo");
+        }
+    }, [navigate])
 
     async function fileToJSON(file: ChangeEvent<HTMLInputElement>) {
         return new Promise((resolve, reject) => {
@@ -25,7 +31,11 @@ function ProtectedApp() {
             <br />
             <form onSubmit={(e) => {
                 e.preventDefault();
-                localStorage.setItem("firebase", JSON.stringify(firebaseConfig));
+                localStorage.setItem("firebase", JSON.stringify(({
+                    ...firebaseConfig,
+                    email: email,
+                    password: password
+                })));
                 console.log(firebaseConfig);
                 loadFirebaseConfigFromLocalStorage();
             }}>
@@ -40,28 +50,6 @@ function ProtectedApp() {
                 <input type="file" accept='application/json' onChange={(e) => fileToJSON(e)} />
                 <button type='submit'>Save</button>
             </form>
-            <br />
-            <p>Or use password!</p>
-            <input type='password' value={masterKey} onChange={e => setMasterKey(e.target.value)} />
-            <button onClick={() => {
-                loadFirebaseConfigFromLocalStorage()
-                // const auth = getAuth();
-                signInWithEmailAndPassword(auth!, email, password)
-                    .then((userCredential) => {
-                        // Signed in
-                        const user = userCredential.user;
-                        alert('succeeddd!');
-                        console.log(user);
-                        // ...
-                    })
-                    .catch((error) => {
-                        const errorCode = error.code;
-                        const errorMessage = error.message;
-                        alert('failed!');
-                    });
-            }}>
-                Login
-            </button>
             <br />
             <Link to="/todo">Backlog</Link>
             <Link to="/learn">LearnIT</Link>
