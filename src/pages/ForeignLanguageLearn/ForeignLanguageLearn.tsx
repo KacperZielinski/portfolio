@@ -1,6 +1,7 @@
-import React, {useEffect, useState} from 'react';
+import React, {useState} from 'react';
 import Quiz from "./Quiz/Quiz";
 import NativeToForeignMode from "./NativeToForeignMode/NativeToForeignMode";
+import './ForeignLanguageLearn.scss';
 
 enum Mode {
     NOT_CHOSEN,
@@ -12,7 +13,7 @@ function ForeignLanguageLearn() {
     const [mode, setMode] = useState(Mode.NOT_CHOSEN);
 
     return (
-        <div>
+        <div className='container'>
             {mode === Mode.NOT_CHOSEN && (
                 <>
                     <p>Please select mode: </p>
