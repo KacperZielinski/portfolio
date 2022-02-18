@@ -47,3 +47,6 @@ To learn React, check out the [React documentation](https://reactjs.org/).
 
 TODO
 - welcome page 3 tails
+- carousel
+- transform effects
+- like a tesla

@@ -1,12 +1,14 @@
 import { initializeApp } from "firebase/app";
-import { Firestore, getFirestore } from "firebase/firestore";
+import {addDoc, collection, Firestore, getDocs, getFirestore} from "firebase/firestore";
 import {Auth, getAuth, signInWithEmailAndPassword} from "firebase/auth";
 import {FirebaseConfig, User} from "../model/LocalStorageData";
 
-let db: Firestore | undefined;
-let auth: Auth | undefined;
+export const NATIVE_TO_FOREIGN_COLLECTION = 'ntf';
 
-const initializeFirebase = (firebaseConfig: any) => {
+export let db: Firestore | undefined;
+export let auth: Auth | undefined;
+
+export const initializeFirebase = (firebaseConfig: any) => {
     const firebaseApp = initializeApp(firebaseConfig);
     db = getFirestore(firebaseApp);
     auth = getAuth(firebaseApp);
@@ -24,7 +26,6 @@ export const loadFirebaseConfigFromLocalStorage: () => void = () => {
             apiKey: localData.apiKey,
             storageBucket: localData.storageBucket,
         }
-        console.log(config);
         initializeFirebase(config);
         signInWithEmailAndPassword(auth!, localData.email || '', localData.password || '')
             .then((userCredential) => {
@@ -41,4 +42,14 @@ export const loadFirebaseConfigFromLocalStorage: () => void = () => {
 }
 loadFirebaseConfigFromLocalStorage();
 
-export {initializeFirebase, db, auth}
+export const getDataFromCollection = async (path: string) => {
+    return getDocs(collection(db!, path))
+}
+
+export const createOrUpdate = async (path: string, data: any) => {
+    try {
+        return addDoc(collection(db!, path), data);
+    } catch (e) {
+        return;
+    }
+}

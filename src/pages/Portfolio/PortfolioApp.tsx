@@ -19,7 +19,8 @@ function PortfolioApp() {
             </nav>
             <main>
                 <article>
-                    <h1>Hi, I'm Kacper</h1>
+                    <h1>Hi, I'm Kacper teskts z lewewj</h1>
+                    <p>A tu po prawej photo</p>
                     <section>
                         <h3>Top skills</h3>
                         <p>Java</p>
@@ -34,6 +35,7 @@ function PortfolioApp() {
                     </section>
                 </article>
             </main>
+
             <footer>
                 <p>© Copyright 2022. All rights reversed.</p>
             </footer>
