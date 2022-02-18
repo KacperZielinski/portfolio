@@ -12,6 +12,7 @@ function NativeToForeignMode() {
     const [guessWordSolution, setGuessWordSolution] = useState('');
     const [guessWordGermanSolution, setGuessWordGermanSolution] = useState('');
     const [guessResult, setGuessResult] = useState(true);
+    const [previousWord, setPreviousWord] = useState({ pl: '', en: '', de: '' });
 
     const sendNewWord = async () => {
         await createOrUpdate(NATIVE_TO_FOREIGN_COLLECTION, {
@@ -28,6 +29,11 @@ function NativeToForeignMode() {
         if (guessInput === guessWordSolution || guessInput === guessWordGermanSolution) {
             setGuessResult(true);
             setGuessInput('');
+            setPreviousWord({
+                pl: guessWord,
+                en: guessWordSolution,
+                de: guessWordGermanSolution
+            });
         } else {
             setGuessResult(false);
         }
@@ -63,7 +69,16 @@ function NativeToForeignMode() {
             <br />
             <button onClick={checkWordAndTakeNext}>Check</button>
             <p>Last result: {guessResult ? 'OK' : 'BAD'}</p>
-            <p>Todo: Display whole previous word</p>
+            <br />
+            {!!previousWord.pl && (
+                <>
+                    <p>Previous word:</p>
+                    <p>PL {previousWord.pl}</p>
+                    <p>EN {previousWord.en}</p>
+                    <p>DE {previousWord.de}</p>
+                </>
+            )}
+
         </div>
     );
 }
