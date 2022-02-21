@@ -14,6 +14,11 @@ function NativeToForeignMode() {
     const [guessResult, setGuessResult] = useState(true);
     const [previousWord, setPreviousWord] = useState({ pl: '', en: '', de: '' });
 
+    useEffect(() => {
+        (async () => checkWordAndTakeNext())()
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [])
+
     const sendNewWord = async () => {
         await createOrUpdate(NATIVE_TO_FOREIGN_COLLECTION, {
             pl: newNativeWord,
@@ -28,15 +33,17 @@ function NativeToForeignMode() {
     const checkWordAndTakeNext = async () => {
         if (guessInput === guessWordSolution || guessInput === guessWordGermanSolution) {
             setGuessResult(true);
-            setGuessInput('');
-            setPreviousWord({
-                pl: guessWord,
-                en: guessWordSolution,
-                de: guessWordGermanSolution
-            });
         } else {
             setGuessResult(false);
         }
+
+        setGuessInput('');
+        setPreviousWord({
+            pl: guessWord,
+            en: guessWordSolution,
+            de: guessWordGermanSolution
+        });
+
         // TODO get random from DB, not on FE side!
         const words = await getDataFromCollection(NATIVE_TO_FOREIGN_COLLECTION);
         const docs = words?.docs;
@@ -46,10 +53,6 @@ function NativeToForeignMode() {
         setGuessWordGermanSolution(randomItem?.data()?.de);
     }
 
-    useEffect(() => {
-        (async () => checkWordAndTakeNext())()
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [])
 
     return (
         <div>
@@ -68,7 +71,7 @@ function NativeToForeignMode() {
             <input value={guessInput} onChange={e => setGuessInput(e.target.value)} />
             <br />
             <button onClick={checkWordAndTakeNext}>Check</button>
-            <p>Last result: {guessResult ? 'OK' : 'BAD'}</p>
+            {guessResult && (<p>Last result: {guessResult ? 'OK' : 'BAD'}</p>)}
             <br />
             {!!previousWord.pl && (
                 <>
