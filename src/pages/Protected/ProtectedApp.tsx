@@ -7,12 +7,11 @@ function ProtectedApp() {
     const [firebaseConfig, setFirebaseConfig] = useState<FirebaseConfig>()
     const [email, setEmail] = useState<string>('');
     const [password, setPassword] = useState<string>('');
-
     const navigate = useNavigate();
 
     useEffect(() => {
         if(localStorage.getItem("firebase") !== null) {
-            navigate("/todo");
+            navigate("/learn");
         }
     }, [navigate])
 

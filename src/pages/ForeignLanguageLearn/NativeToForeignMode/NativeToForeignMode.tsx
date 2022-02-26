@@ -57,13 +57,10 @@ function NativeToForeignMode() {
     return (
         <div>
             <p>Add new word/phrase</p>
-            <p>PL</p>
-            <input value={newNativeWord} onChange={e => setNewNativeWord(e.target.value)} />
-            <p>EN</p>
-            <input value={newForeignWord} onChange={e => setNewForeignWord(e.target.value)} />
-            <p>DE</p>
-            <input value={newForeignGermanWord} onChange={e => setNewForeignGermanWord(e.target.value)} />
-            <br />
+            <input value={newNativeWord} placeholder="PL" onChange={e => setNewNativeWord(e.target.value)}/>
+            <input value={newForeignWord} placeholder="EN" onChange={e => setNewForeignWord(e.target.value)}/>
+            <input value={newForeignGermanWord} placeholder="DE" onChange={e => setNewForeignGermanWord(e.target.value)}/>
+            <br/>
             <button onClick={sendNewWord}>Send</button>
             <hr />
             <div>GuessMode</div>
