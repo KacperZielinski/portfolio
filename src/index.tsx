@@ -7,17 +7,38 @@ import ForeignLanguageLearn from "./pages/ForeignLanguageLearn/ForeignLanguageLe
 import BacklogApp from "./pages/Backlog/BacklogApp";
 import PortfolioApp from "./pages/Portfolio/PortfolioApp";
 import ProtectedApp from "./pages/Protected/ProtectedApp";
+import { ThemeProvider, createTheme } from "@mui/material/styles";
+
+const theme = createTheme({
+    palette: {
+        mode: 'dark',
+    },
+    // components: {
+    //     // Name of the component
+    //     MuiInput: {
+    //         styleOverrides: {
+    //             // Name of the slot
+    //             root: {
+    //                 // Some CSS
+    //                 color: "white"
+    //             },
+    //         },
+    //     },
+    // },
+});
 
 ReactDOM.render(
     <React.StrictMode>
-        <HashRouter>
-            <Routes>
-                <Route path="/app" element={<ProtectedApp />} />
-                <Route path="/learn" element={<ForeignLanguageLearn />} />
-                <Route path="/todo" element={<BacklogApp />} />
-                <Route path="/" element={<PortfolioApp />} />
-            </Routes>
-        </HashRouter>
+        <ThemeProvider theme={theme}>
+            <HashRouter>
+                <Routes>
+                    <Route path="/app" element={<ProtectedApp />} />
+                    <Route path="/learn" element={<ForeignLanguageLearn />} />
+                    <Route path="/todo" element={<BacklogApp />} />
+                    <Route path="/" element={<PortfolioApp />} />
+                </Routes>
+            </HashRouter>
+        </ThemeProvider>
     </React.StrictMode>,
   document.getElementById('root')
 );

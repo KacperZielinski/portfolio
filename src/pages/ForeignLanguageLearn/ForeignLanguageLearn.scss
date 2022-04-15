@@ -6,8 +6,8 @@ hr {
   margin: 16px 0;
 }
 
-input {
-  min-height: 40px;
+.MuiInput-root {
+  color: var(--color-primary);
   margin: 16px 0;
 
   @media only screen and (max-width: 600px) {

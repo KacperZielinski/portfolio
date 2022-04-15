@@ -1,20 +1,27 @@
 import React from 'react';
 import './PortfolioApp.scss';
+import InsertLinkIcon from '@mui/icons-material/InsertLink';
+import GitHubIcon from '@mui/icons-material/GitHub';
+import LinkedInIcon from '@mui/icons-material/LinkedIn';
+import LanguageIcon from '@mui/icons-material/Language';
+import HikingIcon from '@mui/icons-material/Hiking';
+import Brightness4Icon from '@mui/icons-material/Brightness4';
+// import Brightness7Icon from '@mui/icons-material/Brightness7';
 
 function PortfolioApp() {
     return (
         <>
-            <nav>
-                <ul>
-                    <li>Logo</li>
+            <nav className='navbar'>
+                <ul className='navbar__left'>
+                    <li><InsertLinkIcon /></li>
                 </ul>
-                <ul>
-                    <li>Contact</li>
-                    <li>Linkedin</li>
-                    <li>Github</li>
-                    <li>Button pl</li>
-                    <li>Button en</li>
-                    <li>dark/light switch</li>
+                <ul className='navbar__right'>
+                    <li><HikingIcon fontSize="small" aria-label='Contact'/></li>
+                    <li><LinkedInIcon fontSize="small" /></li>
+                    <li><GitHubIcon fontSize="small" /></li>
+                    <li><LanguageIcon fontSize="small" /></li>
+                    <li><LanguageIcon fontSize="small" /></li>
+                    <li><Brightness4Icon fontSize="small" /></li>
                 </ul>
             </nav>
             <main>

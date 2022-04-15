@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import {createOrUpdate, getDataFromCollection, NATIVE_TO_FOREIGN_COLLECTION} from "../../firebase";
+import {Input, Button} from "@mui/material";
 
 function NativeToForeignMode() {
     const [newNativeWord, setNewNativeWord] = useState('');
@@ -57,17 +58,17 @@ function NativeToForeignMode() {
     return (
         <div>
             <p>Add new word/phrase</p>
-            <input value={newNativeWord} placeholder="PL" onChange={e => setNewNativeWord(e.target.value)}/>
-            <input value={newForeignWord} placeholder="EN" onChange={e => setNewForeignWord(e.target.value)}/>
-            <input value={newForeignGermanWord} placeholder="DE" onChange={e => setNewForeignGermanWord(e.target.value)}/>
+            <Input value={newNativeWord} placeholder="PL" onChange={e => setNewNativeWord(e.target.value)}/>
+            <Input value={newForeignWord} placeholder="EN" onChange={e => setNewForeignWord(e.target.value)}/>
+            <Input value={newForeignGermanWord} placeholder="DE" onChange={e => setNewForeignGermanWord(e.target.value)}/>
             <br/>
-            <button onClick={sendNewWord}>Send</button>
+            <Button variant="contained" onClick={sendNewWord}>Send</Button>
             <hr />
             <div>GuessMode</div>
             <p>{guessWord}</p>
-            <input value={guessInput} onChange={e => setGuessInput(e.target.value)} />
+            <Input value={guessInput} onChange={e => setGuessInput(e.target.value)} />
             <br />
-            <button onClick={checkWordAndTakeNext}>Check</button>
+            <Button variant="contained" onClick={checkWordAndTakeNext}>Check</Button>
             {guessResult && (<p>Last result: {guessResult ? 'OK' : 'BAD'}</p>)}
             <br />
             {!!previousWord.pl && (
