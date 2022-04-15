@@ -6,6 +6,7 @@ import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import LanguageIcon from '@mui/icons-material/Language';
 import HikingIcon from '@mui/icons-material/Hiking';
 import Brightness4Icon from '@mui/icons-material/Brightness4';
+import TopSkillsCarousel from "./components/carousel/TopSkillsCarousel";
 // import Brightness7Icon from '@mui/icons-material/Brightness7';
 
 function PortfolioApp() {
@@ -28,11 +29,8 @@ function PortfolioApp() {
                 <article>
                     <h1>Hi, I'm Kacper teskts z lewewj</h1>
                     <p>A tu po prawej photo</p>
-                    <section>
-                        <h3>Top skills</h3>
-                        <p>Java</p>
-                        <p>Spring</p>
-                        <p>React</p>
+                    <section className='top-skills-carousel'>
+                        <TopSkillsCarousel />
                     </section>
                     <section>
                         <h3>Currently learning</h3>
@@ -42,6 +40,8 @@ function PortfolioApp() {
                     </section>
                 </article>
             </main>
+            <p>Wyszukiwarka technologii</p>
+            <p>Email me</p>
 
             <footer>
                 <p>© Copyright 2022. All rights reversed.</p>
