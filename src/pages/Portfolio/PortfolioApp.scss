@@ -4,13 +4,13 @@ nav {
   background-color: #191c20;
   width: 100%;
   padding: 10px 10px;
-  box-shadow: 0 1px 164px 0 rgba(233, 233, 233, 0.07);
+  box-shadow: rgba(255, 255, 255, 0.08) 0 1px 0;
 
   ul {
     display: flex;
+    justify-content: center;
 
     &.navbar__left {
-      align-self: center;
     }
 
     &.navbar__right {
@@ -21,7 +21,8 @@ nav {
     }
 
     li {
-      align-self: center;
+      display: flex;
+      align-items: center;
       margin: 0 4px;
     }
   }
