@@ -13,7 +13,6 @@ function FirstPage() {
     }, []);
 
     const goToSecondPage: () => void = () => {
-        console.log(window.innerHeight);
         window.scrollBy(0, window.innerHeight);
     }
 

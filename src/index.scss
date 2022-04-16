@@ -3,10 +3,14 @@
   --color-primary--hover: #068ac4;
   --color-background: #0e141b;
   --color-background-second: #1d212a;
+  --font-size-xs: 8px;
+  --font-size-s: 10px;
+  --font-size-m: 13px;
 }
 
 html, body {
   box-sizing: border-box;
+  font-size: var(--font-size-m);
 
   a {
     color: inherit;

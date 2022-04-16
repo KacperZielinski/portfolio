@@ -7,16 +7,18 @@
   align-items: center;
 
   img {
-    max-width: 240px;
-    max-height: calc(min(240px, 30vh));
+    max-width: 40vw;
+    max-height: 30vh;
   }
 
   .first-page__header {
 
     &--left {
+      margin-right: -20px;
     }
 
     &--right {
+      margin-left: -20px;
     }
   }
 
@@ -37,4 +39,9 @@
     }
 
   }
+
+  @media only screen and (max-width: 440px) {
+    font-size: var(--font-size-s);
+  }
+
 }
