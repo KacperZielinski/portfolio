@@ -1,0 +1,46 @@
+nav {
+  position: fixed;
+  width: 100%;
+
+  .navbar__container {
+    display: flex;
+    justify-content: space-between;
+    background-color: #191c20;
+    width: 100%;
+    padding: 8px 32px;
+    box-shadow: rgba(255, 255, 255, 0.08) 0 1px 0;
+    opacity: 0.9;
+
+    ul {
+      display: flex;
+      justify-content: center;
+
+      &.navbar__left {
+      }
+
+      &.navbar__right {
+
+        svg:hover {
+          opacity: 0.75;
+        }
+
+        li {
+          margin: 0 8px;
+        }
+      }
+
+      li {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 0 4px;
+
+        a {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+        }
+      }
+    }
+  }
+}

@@ -62,13 +62,13 @@ function NativeToForeignMode() {
             <Input value={newForeignWord} placeholder="EN" onChange={e => setNewForeignWord(e.target.value)}/>
             <Input value={newForeignGermanWord} placeholder="DE" onChange={e => setNewForeignGermanWord(e.target.value)}/>
             <br/>
-            <Button variant="contained" onClick={sendNewWord}>Send</Button>
+            <Button variant="outlined" onClick={sendNewWord}>Send</Button>
             <hr />
             <div>GuessMode</div>
             <p>{guessWord}</p>
             <Input value={guessInput} onChange={e => setGuessInput(e.target.value)} />
             <br />
-            <Button variant="contained" onClick={checkWordAndTakeNext}>Check</Button>
+            <Button variant="outlined" onClick={checkWordAndTakeNext}>Check</Button>
             {guessResult && (<p>Last result: {guessResult ? 'OK' : 'BAD'}</p>)}
             <br />
             {!!previousWord.pl && (

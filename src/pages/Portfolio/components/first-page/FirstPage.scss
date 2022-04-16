@@ -1,0 +1,40 @@
+.first-page__container {
+  display: flex;
+  height: 100vh;
+  max-width: 100vw;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+
+  img {
+    max-width: 240px;
+    max-height: calc(min(240px, 30vh));
+  }
+
+  .first-page__header {
+
+    &--left {
+    }
+
+    &--right {
+    }
+  }
+
+  .first-page__button {
+    display: flex;
+    align-items: center;
+    position: absolute;
+    bottom: 24px;
+
+    &--image {
+      &:hover {
+        color: var(--color-primary--hover);
+      }
+    }
+
+    &--label {
+      padding-left: 16px;
+    }
+
+  }
+}

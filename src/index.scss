@@ -1,14 +1,27 @@
 :root {
   --color-primary: #cecdcd;
+  --color-primary--hover: #068ac4;
   --color-background: #0e141b;
+  --color-background-second: #1d212a;
 }
 
 html, body {
   box-sizing: border-box;
 
+  a {
+    color: inherit;
+  }
+
   &, p, ul {
     padding: 0;
     margin: 0;
+  }
+
+  -ms-overflow-style: none;  // Internet Explorer 10+
+  scrollbar-width: none;  // Firefox
+
+  &::-webkit-scrollbar {
+    display: none;  // Safari and Chrome
   }
 }
 
