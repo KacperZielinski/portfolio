@@ -1,3 +1,18 @@
 .top-skills-carousel__container {
+  display: block;
+  width: 50%;
 
+  .top-skills-carousel__item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .slick-dots li.slick-active button:before {
+    color: white;
+  }
+
+  .slick-dots button:before {
+    color: rgba(255, 255, 255, 0.25);
+  }
 }

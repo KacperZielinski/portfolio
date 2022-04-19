@@ -1,12 +1,14 @@
 import React from 'react';
 import './SecondPage.scss';
+import TopSkillsCarousel from "../carousel/TopSkillsCarousel";
 
 function SecondPage() {
 
     return (
-        <footer style={{backgroundColor: "#1d212a"}}>
-            <p>© Copyright 2022. All rights reversed.</p>
-        </footer>
+        <section className='second-page__container'>
+            {/*<p>© Copyright 2022. All rights reversed.</p>*/}
+            <TopSkillsCarousel />
+        </section>
     );
 }
 
