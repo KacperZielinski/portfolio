@@ -23,6 +23,11 @@ function TopSkillsCarousel() {
                 </div>
                 <div>
                     <div className='top-skills-carousel__item'>
+                        <img src='./svg/es6.svg' width='100wv' height='240px' alt='JavaScript'/>
+                    </div>
+                </div>
+                <div>
+                    <div className='top-skills-carousel__item'>
                         <img src='./svg/react.svg' width='100wv' height='240px' alt='React'/>
                     </div>
                 </div>

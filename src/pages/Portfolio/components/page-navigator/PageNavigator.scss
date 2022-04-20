@@ -1,0 +1,25 @@
+.page-navigator__button {
+
+  &--down {
+    position: fixed;
+    bottom: 36px;
+    right: 48px;
+    &:hover {
+      color: var(--color-primary--hover);
+    }
+  }
+
+  &--up {
+    position: fixed;
+    bottom: 36px;
+    right: 72px;
+    &:hover {
+      color: var(--color-primary--hover);
+    }
+  }
+
+  &--label {
+    padding-left: 16px;
+  }
+
+}

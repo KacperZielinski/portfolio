@@ -50,3 +50,8 @@ TODO
 - carousel
 - transform effects
 - like a tesla
+- scroll slowly to hash
+- /blog route
+- React Smooth
+- rename first,second,third page react components
+

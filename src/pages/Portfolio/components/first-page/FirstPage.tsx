@@ -4,7 +4,7 @@ import './FirstPage.scss';
 function FirstPage() {
 
     return (
-        <section className='first-page__container'>
+        <section className='first-page__container' id='landing-page'>
             <h1 className='first-page__header--left'>Looking for a</h1>
             <img src='./svg/java.svg' alt='Java' />
             <h1 className='first-page__header--right'>developer?</h1>

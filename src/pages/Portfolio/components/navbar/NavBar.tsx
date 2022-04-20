@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import './NavBar.scss';
 import InsertLinkIcon from "@mui/icons-material/InsertLink";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
@@ -8,18 +8,18 @@ import Brightness4Icon from "@mui/icons-material/Brightness4";
 
 function NavBar() {
     // TODO dodaj jakas cssowa klase, albo usun!
-    // const [isBackgroundInvisible, setIsBackgroundInvisible] = useState<boolean>(true);
+    const [hasDefaultBackground, setHasDefaultBackground] = useState<boolean>(true);
 
-    // useEffect(() => {
-    //     const onScroll = () => setIsBackgroundInvisible(window.scrollY === 0)
-    //     window.addEventListener("scroll", onScroll);
-    //
-    //     return () => window.removeEventListener("scroll", onScroll);
-    // }, []);
+    useEffect(() => {
+        const onScroll = () => setHasDefaultBackground(window.scrollY === 0)
+        window.addEventListener("scroll", onScroll);
+
+        return () => window.removeEventListener("scroll", onScroll);
+    }, []);
 
     return (
         <nav className='navbar'>
-            <div className="navbar__container">
+            <div className={`navbar__container ${hasDefaultBackground ? "" : "background-default"}`}>
                 <ul className='navbar__left'>
                     <li><InsertLinkIcon /></li>
                 </ul>
