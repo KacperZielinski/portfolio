@@ -11,12 +11,12 @@ function PortfolioApp() {
 
     return (
         <>
-            <PageNavigator />
             <NavBar />
             <FirstPage />
             <SecondPage />
             <ThirdPage />
             <Footer />
+            <PageNavigator />
         </>
     );
 }
