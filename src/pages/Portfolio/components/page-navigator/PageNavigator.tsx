@@ -24,6 +24,7 @@ interface PageOffset {
 
 function PageNavigator() {
     const [currentScrollY, setCurrentScrollY] = useState<number>(0);
+    const [endOfPage, setEndOfPage] = useState<boolean>(false);
     const [offsetArray, setOffsetArray] = useState<PageOffset[]>([]);
 
     useEffect(() => {
@@ -32,13 +33,17 @@ function PageNavigator() {
             id: id,
             offset: getOffset(document.getElementById(id))
         }))
-        console.log(arr);
         setOffsetArray(arr)
     }, [])
 
     useEffect(() => {
         const onScroll = () => {
             setCurrentScrollY(window.scrollY);
+            if (document.documentElement.offsetHeight + document.documentElement.scrollTop >= document.documentElement.scrollHeight) {
+                setEndOfPage(true);
+            } else {
+                setEndOfPage(false);
+            }
         }
         window.addEventListener("scroll", onScroll);
 
@@ -46,7 +51,7 @@ function PageNavigator() {
     }, []);
 
     const goDown: () => void = () => {
-        const nextPage = offsetArray.findIndex(pageOffset => pageOffset.offset > currentScrollY);
+        const nextPage = offsetArray.findIndex(pageOffset => pageOffset.offset - 1 > currentScrollY);
         document.getElementById(ids[nextPage])?.scrollIntoView({
             behavior: 'smooth'
         });
@@ -54,7 +59,7 @@ function PageNavigator() {
     }
 
     const goUp: () => void = () => {
-        const prevPage = offsetArray.slice().reverse().findIndex(pageOffset => pageOffset.offset < currentScrollY);
+        const prevPage = offsetArray.slice().reverse().findIndex(pageOffset => pageOffset.offset + 1 < currentScrollY);
         document.getElementById(ids[ids.length - (1+prevPage)])?.scrollIntoView({
             behavior: 'smooth'
         });
@@ -64,7 +69,7 @@ function PageNavigator() {
     return (
         <div className='page-navigator__button'>
             {currentScrollY > 0 && (<KeyboardArrowUpOutlinedIcon className='page-navigator__button--up' onClick={goUp}/>)}
-            {(offsetArray.length && currentScrollY <= offsetArray[(offsetArray.length)-1].offset)
+            {!endOfPage && (offsetArray.length && currentScrollY <= offsetArray[(offsetArray.length)-1].offset)
                 && (<KeyboardArrowDownOutlinedIcon className='page-navigator__button--down' onClick={goDown}/>)}
             {/*<span className='page-navigator__button--label'>Here I am!</span>*/}
         </div>
