@@ -28,12 +28,17 @@ function PageNavigator() {
     const [offsetArray, setOffsetArray] = useState<PageOffset[]>([]);
 
     useEffect(() => {
-        const arr: PageOffset[] = [];
-        ids.forEach(id => arr.push({
-            id: id,
-            offset: getOffset(document.getElementById(id))
-        }))
-        setOffsetArray(arr)
+        const onZoom = () => {
+            const arr: PageOffset[] = [];
+            ids.forEach(id => arr.push({
+                id: id,
+                offset: getOffset(document.getElementById(id))
+            }))
+            setOffsetArray(arr)
+        }
+        window.addEventListener("resize", onZoom);
+
+        return () => window.removeEventListener("resize", onZoom);
     }, [])
 
     useEffect(() => {

@@ -5,7 +5,7 @@
     bottom: 36px;
     right: 48px;
     &:hover {
-      color: var(--color-primary--hover);
+      opacity: 0.75;
     }
   }
 
@@ -14,12 +14,8 @@
     bottom: 36px;
     right: 72px;
     &:hover {
-      color: var(--color-primary--hover);
+      opacity: 0.75;
     }
-  }
-
-  &--label {
-    padding-left: 16px;
   }
 
 }
