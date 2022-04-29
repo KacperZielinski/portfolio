@@ -37,6 +37,7 @@ function PageNavigator() {
             setOffsetArray(arr)
         }
         window.addEventListener("resize", onZoom);
+        onZoom();
 
         return () => window.removeEventListener("resize", onZoom);
     }, [])
@@ -51,6 +52,7 @@ function PageNavigator() {
             }
         }
         window.addEventListener("scroll", onScroll);
+        onScroll();
 
         return () => window.removeEventListener("scroll", onScroll);
     }, []);
@@ -73,10 +75,9 @@ function PageNavigator() {
 
     return (
         <div className='page-navigator__button'>
-            {currentScrollY > 0 && (<KeyboardArrowUpOutlinedIcon className='page-navigator__button--up' onClick={goUp}/>)}
-            {!endOfPage && (offsetArray.length && currentScrollY <= offsetArray[(offsetArray.length)-1].offset)
-                && (<KeyboardArrowDownOutlinedIcon className='page-navigator__button--down' onClick={goDown}/>)}
-            {/*<span className='page-navigator__button--label'>Here I am!</span>*/}
+            {(currentScrollY > 0 && <KeyboardArrowUpOutlinedIcon className='page-navigator__button--up' onClick={goUp}/>)}
+            {(Boolean(!endOfPage && (offsetArray.length && currentScrollY <= offsetArray[(offsetArray.length)-1].offset))
+                && <KeyboardArrowDownOutlinedIcon className='page-navigator__button--down' onClick={goDown}/>)}
         </div>
     );
 
