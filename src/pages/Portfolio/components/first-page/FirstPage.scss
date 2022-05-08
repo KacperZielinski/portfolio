@@ -5,11 +5,11 @@
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  animation: fadein 2s;
 
   img {
     max-width: 40vw;
     max-height: 30vh;
+    animation: fadein 6s;
   }
 
   .first-page__header {
