@@ -37,7 +37,7 @@ function PageNavigator() {
             setOffsetArray(arr)
         }
         window.addEventListener("resize", onZoom);
-        onZoom();
+        setTimeout(() => onZoom(), 500);
 
         return () => window.removeEventListener("resize", onZoom);
     }, [])

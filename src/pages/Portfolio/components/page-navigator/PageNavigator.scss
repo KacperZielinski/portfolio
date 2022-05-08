@@ -4,6 +4,8 @@
     position: fixed;
     bottom: 36px;
     right: 48px;
+    animation: fadein 0.5s;
+
     &:hover {
       opacity: 0.75;
     }
@@ -13,6 +15,8 @@
     position: fixed;
     bottom: 36px;
     right: 72px;
+    animation: fadein 0.5s;
+
     &:hover {
       opacity: 0.75;
     }
