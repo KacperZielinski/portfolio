@@ -4,6 +4,7 @@ import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
 import './TopSkillsCarousel.scss'
 
+// rename to currenty learning.. Docker, Cloud, k8s, DDD
 function TopSkillsCarousel() {
     const settings = {
         dots: true,
@@ -23,7 +24,7 @@ function TopSkillsCarousel() {
                 </div>
                 <div>
                     <div className='top-skills-carousel__item'>
-                        <img src='./svg/es6.svg' width='100wv' height='240px' alt='JavaScript'/>
+                        <img src='./svg/js.svg' width='100wv' height='240px' alt='JavaScript'/>
                     </div>
                 </div>
                 <div>
