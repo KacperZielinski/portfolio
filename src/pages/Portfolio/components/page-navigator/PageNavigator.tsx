@@ -37,7 +37,7 @@ function PageNavigator() {
             setOffsetArray(arr)
         }
         window.addEventListener("resize", onZoom);
-        setTimeout(() => onZoom(), 500);
+        setTimeout(() => onZoom(), 400);
 
         return () => window.removeEventListener("resize", onZoom);
     }, [])
@@ -52,7 +52,7 @@ function PageNavigator() {
             }
         }
         window.addEventListener("scroll", onScroll);
-        onScroll();
+        setTimeout(() => onScroll(), 600);
 
         return () => window.removeEventListener("scroll", onScroll);
     }, []);

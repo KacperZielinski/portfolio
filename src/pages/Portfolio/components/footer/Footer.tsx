@@ -5,7 +5,7 @@ function Footer() {
 
     return (
         <footer id='footer'>
-            <p>© Copyright 2022. Kacper Zieliński.</p>
+            <p>© Copyright 2022. Kacper Zieliński</p>
         </footer>
     );
 }
