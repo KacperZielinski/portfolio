@@ -15,16 +15,13 @@ nav {
     transition: all 0.3s linear;
 
     &.background-default {
-      background-color: #191c20;
+      background-color: var(--navbar-scrolled-background);
       box-shadow: rgba(255, 255, 255, 0.08) 0 1px 0;
     }
 
     ul {
       display: flex;
       justify-content: center;
-
-      &.navbar__left {
-      }
 
       &.navbar__right {
 

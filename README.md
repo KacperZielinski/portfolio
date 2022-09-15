@@ -55,4 +55,5 @@ TODO
 - React Smooth
 - rename first,second,third page react components
 - throttle on zoom/scroll events (performance)
+- local storage for dark/light mode
 

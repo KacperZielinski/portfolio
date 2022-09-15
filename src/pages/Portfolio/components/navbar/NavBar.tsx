@@ -3,10 +3,13 @@ import './NavBar.scss';
 import InsertLinkIcon from "@mui/icons-material/InsertLink";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import GitHubIcon from "@mui/icons-material/GitHub";
-import LanguageIcon from "@mui/icons-material/Language";
 import Brightness4Icon from "@mui/icons-material/Brightness4";
 
-function NavBar() {
+interface NavBarProps {
+    toggleTheme: () => void;
+}
+
+const NavBar: React.FC<NavBarProps> = ({toggleTheme}) => {
     // TODO dodaj jakas cssowa klase, albo usun!
     const [hasDefaultBackground, setHasDefaultBackground] = useState<boolean>(true);
 
@@ -34,8 +37,7 @@ function NavBar() {
                             <GitHubIcon fontSize="small" />
                         </a>
                     </li>
-                    <li><LanguageIcon fontSize="small" /></li>
-                    <li><Brightness4Icon fontSize="small" /></li>
+                    <li><Brightness4Icon fontSize="small" onClick={() => toggleTheme()} /></li>
                 </ul>
             </div>
         </nav>

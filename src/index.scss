@@ -6,6 +6,16 @@
   --font-size-xs: 8px;
   --font-size-s: 10px;
   --font-size-m: 13px;
+
+  --navbar-scrolled-background: #191c20;
+}
+
+[data-theme='light'] {
+  --color-primary: rgb(79, 73, 73);
+  --color-primary--hover: rgb(108, 103, 103);
+  --color-background: rgb(250, 250, 250);
+  --color-background-second: white;
+  --navbar-scrolled-background: #ffffff;
 }
 
 html, body {

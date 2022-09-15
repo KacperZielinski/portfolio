@@ -1,4 +1,4 @@
-import React  from 'react';
+import React, { useState }  from 'react';
 import './PortfolioApp.scss';
 import NavBar from "./components/navbar/NavBar";
 import FirstPage from "./components/first-page/FirstPage";
@@ -7,17 +7,22 @@ import SecondPage from "./components/second-page/SecondPage";
 import ThirdPage from "./components/third-page/ThirdPage";
 import PageNavigator from "./components/page-navigator/PageNavigator";
 
-function PortfolioApp() {
+const PortfolioApp: React.FC = () => {
+    const [theme, setTheme] = useState<'dark' | 'light'>('dark');
+
+    const toggleTheme: () => void = () => {
+        setTheme(theme === 'dark' ? 'light' : 'dark');
+    }
 
     return (
-        <>
-            <NavBar />
+        <div data-theme={theme}>
+            <NavBar toggleTheme={toggleTheme}/>
             <FirstPage />
             <SecondPage />
             <ThirdPage />
             <Footer />
             <PageNavigator />
-        </>
+        </div>
     );
 }
 
